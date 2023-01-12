@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "493330412726",
+    "project_id": "photo-4f3df",
+    "storage_bucket": "photo-4f3df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493330412726:android:da543d717e02eb47992217",
+        "android_client_info": {
+          "package_name": "com.example.verygoodcore.photo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493330412726-3otgclspcmasfg0r8eqtb2q0ss25gufp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDetPLhHsjubJakcQ2f6zihEhCTKeu1n0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493330412726-3otgclspcmasfg0r8eqtb2q0ss25gufp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
