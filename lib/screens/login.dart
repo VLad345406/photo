@@ -144,10 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
             ),
             child: TextButton(
-              onPressed: () async {
-
-
-              },
+              onPressed: () async {},
               child: Text(
                 'LOG IN',
                 style: GoogleFonts.roboto(
@@ -177,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Container(
               margin: const EdgeInsets.only(top: 16),
               child: IconButton(
-                icon: const Icon(Icons.android),
+                icon: Image.asset('assets/login_screen/Google.png'),
                 onPressed: ()async {
                   final FirebaseAuth auth;
 
