@@ -8,9 +8,9 @@ environment:
   flutter: 3.3.2
 
 dependencies:
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.3
   flutter_svg: ^1.1.5
-  modal_bottom_sheet: ^2.1.2
+  modal_bottom_sheet: ^3.0.0-pre
 
   bloc: ^8.1.0
   flutter:
