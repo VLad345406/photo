@@ -53,7 +53,7 @@ class App extends StatelessWidget {
 
 String getInitialRoute(){
   if (true)
-    return '/';
+    return '/home';
   else
     return '/home';
 }
