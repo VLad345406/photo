@@ -31,9 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
           Container(
             margin: const EdgeInsets.only(left: 16, top: 32),
@@ -47,60 +46,62 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          Expanded(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    width: screenWidth - 32,
-                    margin: const EdgeInsets.only(left: 16, top: 24, right: 16),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: screenWidth - 32,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/start_background.jpg",
-                              ),
-                              fit: BoxFit.cover,
+          SizedBox(
+            height: screenWidth - 32 + 16 + 52,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Container(
+                  width: screenWidth - 32,
+                  margin: const EdgeInsets.only(left: 16, top: 24, right: 16),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: screenWidth - 32,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              "assets/images/start_background.jpg",
                             ),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          alignment: Alignment.bottomLeft,
-                          child: Image.asset('assets/images/user.png'),
-                        ),
-                      ],
-                    ),
-                  ),Container(
-                    width: screenWidth - 32,
-                    margin: const EdgeInsets.only(left: 16, top: 24, right: 16),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: screenWidth - 32,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/start_background.jpg",
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          alignment: Alignment.bottomLeft,
-                          child: Image.asset('assets/images/user.png'),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 16),
+                        alignment: Alignment.bottomLeft,
+                        child: Image.asset('assets/images/user.png'),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),Container(
+                  width: screenWidth - 32,
+                  margin: const EdgeInsets.only(left: 16, top: 24, right: 16),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: screenWidth - 32,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              "assets/images/start_background.jpg",
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 16),
+                        alignment: Alignment.bottomLeft,
+                        child: Image.asset('assets/images/user.png'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
+
           Container(
             margin: const EdgeInsets.only(left: 16, top: 48),
             child: Text(
@@ -112,10 +113,61 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+
+          Container(
+            margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+            height: screenWidth - 32,
+            width: screenWidth - 32,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/start_background.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),Container(
+            margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+            height: screenWidth - 32,
+            width: screenWidth - 32,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/start_background.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),Container(
+            margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+            height: screenWidth - 32,
+            width: screenWidth - 32,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/start_background.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),Container(
+            margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+            height: screenWidth - 32,
+            width: screenWidth - 32,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/start_background.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+
           Container(
             width: widthButton,
             height: 52,
-            margin: const EdgeInsets.only(top: 32, left: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
             decoration: BoxDecoration(
               border: Border.all(width: 2),
               borderRadius: BorderRadius.circular(6),
