@@ -17,6 +17,8 @@ import 'package:photo/screens/registration.dart';
 import 'package:photo/screens/registration_nick.dart';
 import 'package:photo/screens/start_screen.dart';
 
+import '../../screens/main_screens/photo_open.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -40,6 +42,7 @@ class App extends StatelessWidget {
         '/add' : (context) => const HomeScreen(),
         '/message' : (context) => const MessageScreen(),
         '/profile' : (context) => const ProfileScreen(),
+        '/photo_open' : (context) => const PhotoOpen(),
       },
 
       localizationsDelegates: const [
@@ -53,7 +56,7 @@ class App extends StatelessWidget {
 
 String getInitialRoute(){
   if (true)
-    return '/';
+    return '/home';
   else
     return '/home';
 }

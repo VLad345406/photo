@@ -144,7 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
             ),
             child: TextButton(
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
+              },
               child: Text(
                 'LOG IN',
                 style: GoogleFonts.roboto(

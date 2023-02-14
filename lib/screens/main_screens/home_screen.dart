@@ -126,7 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-          ),Container(
+          ),
+          Container(
             margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
             height: screenWidth - 32,
             width: screenWidth - 32,
@@ -138,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-          ),Container(
+          ),
+          Container(
             margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
             height: screenWidth - 32,
             width: screenWidth - 32,
@@ -150,7 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-          ),Container(
+          ),
+          Container(
             margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
             height: screenWidth - 32,
             width: screenWidth - 32,
