@@ -42,7 +42,7 @@ class App extends StatelessWidget {
         '/add' : (context) => const HomeScreen(),
         '/message' : (context) => const MessageScreen(),
         '/profile' : (context) => const ProfileScreen(),
-        '/photo_open' : (context) => const PhotoOpen(),
+        //'/photo_open' : (context) => const PhotoOpen(),
       },
 
       localizationsDelegates: const [
@@ -56,7 +56,7 @@ class App extends StatelessWidget {
 
 String getInitialRoute(){
   if (true)
-    return '/home';
+    return '/';
   else
     return '/home';
 }
