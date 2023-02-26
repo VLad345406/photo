@@ -42,7 +42,6 @@ class App extends StatelessWidget {
         '/add' : (context) => const HomeScreen(),
         '/message' : (context) => const MessageScreen(),
         '/profile' : (context) => const ProfileScreen(),
-        //'/photo_open' : (context) => const PhotoOpen(),
       },
 
       localizationsDelegates: const [
