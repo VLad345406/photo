@@ -19,8 +19,6 @@ class _PhotoOpenState extends State<PhotoOpen> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    final widthButton = (screenWidth - 32 - 9) / 2;
-
     return Scaffold(
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
@@ -38,12 +36,17 @@ class _PhotoOpenState extends State<PhotoOpen> {
           Align(
             alignment: Alignment.topRight,
             child: Container(
-                margin: const EdgeInsets.only(top: 40, right: 16),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.close, color: Colors.white,))),
+              margin: const EdgeInsets.only(top: 40, right: 16),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),

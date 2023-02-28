@@ -16,14 +16,19 @@ import 'package:photo/screens/main_screens/search_screen.dart';
 import 'package:photo/screens/registration.dart';
 import 'package:photo/screens/registration_nick.dart';
 import 'package:photo/screens/start_screen.dart';
-
-import '../../screens/main_screens/photo_open.dart';
+import 'package:flutter/services.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
@@ -41,7 +46,7 @@ class App extends StatelessWidget {
         '/search' : (context) => const SearchScreen(),
         '/add' : (context) => const HomeScreen(),
         '/message' : (context) => const MessageScreen(),
-        '/profile' : (context) => const ProfileScreen(),
+        '/individual_profile' : (context) => const ProfileScreen( mode: 'individual',),
       },
 
       localizationsDelegates: const [
@@ -56,6 +61,6 @@ class App extends StatelessWidget {
 String getInitialRoute(){
   if (true)
     return '/';
-  else
-    return '/home';
+  // else
+  //   return '/home';
 }

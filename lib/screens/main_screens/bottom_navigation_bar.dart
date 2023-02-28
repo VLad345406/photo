@@ -23,7 +23,7 @@ class _BottomMenuState extends State<BottomMenu> {
       '/search',
       '/add',
       '/message',
-      '/profile'
+      '/individual_profile'
     ];
 
     return BottomNavigationBar(
