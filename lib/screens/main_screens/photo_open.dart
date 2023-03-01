@@ -25,6 +25,8 @@ class _PhotoOpenState extends State<PhotoOpen> {
         fit: StackFit.loose,
         children: [
           PhotoView(
+            minScale: 0.18,
+            maxScale: 1.0,
             imageProvider: AssetImage(widget.path),
           ),
           Align(
