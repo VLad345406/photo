@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:photo/screens/main_screens/bottom_navigation_bar.dart';
+import 'package:photo/screens/main_screens/chat_screen.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -48,6 +49,12 @@ class _MessageScreenState extends State<MessageScreen> {
             fontWeight: FontWeight.w400,
           ),
         ),
+        shape: Border(
+            bottom: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
       ),
       body: Column(
         children: [
@@ -60,6 +67,7 @@ class _MessageScreenState extends State<MessageScreen> {
                 return GestureDetector(
                   onTap: () {
                     print("Tap $index");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen(index: index)));
                   },
                   child: Container(
                     margin: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
