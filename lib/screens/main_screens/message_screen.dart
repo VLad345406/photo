@@ -58,8 +58,7 @@ class _MessageScreenState extends State<MessageScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: screenHeight - 158,
+          Expanded(
             child: ListView.separated(
               scrollDirection: Axis.vertical,
               itemCount: users.length,
