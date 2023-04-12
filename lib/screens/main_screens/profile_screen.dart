@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           }
           else if (index < photoArray.length + 1 && index < _countPictures + 1){
             return GestureDetector(
-              onScaleStart: (ScaleStartDetails details){
+              onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoOpen(path: 'assets/images/Profile1/${photoArray[index - 1]}')));
               },
               /*onTap: (){

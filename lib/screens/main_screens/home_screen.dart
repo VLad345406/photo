@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: [
                               GestureDetector(
-                                onScaleStart: (ScaleStartDetails details){
+                                onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoOpen(path: 'assets/images/start_background.jpg')));
                                 },
                                 child: Container(
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Column(
                 children: [
                   GestureDetector(
-                    onScaleStart: (ScaleStartDetails details){
+                    onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoOpen(path: 'assets/images/start_background.jpg')));
                     },
                     child: Container(
