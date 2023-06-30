@@ -82,7 +82,7 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
             ),
             child: TextButton(
               onPressed: () {
-                print("EDIT PROFILE");
+                Navigator.pushNamed(context, '/edit_profile');
               },
               child: Text(
                 'EDIT PROFILE',

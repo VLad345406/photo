@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/services.dart';
 
 import 'package:photo/screens/main_screens/bottom_navigation_bar.dart';
 import 'package:photo/screens/main_screens/photo_open.dart';

@@ -18,6 +18,8 @@ import 'package:photo/screens/registration_nick.dart';
 import 'package:photo/screens/start_screen.dart';
 import 'package:flutter/services.dart';
 
+import '../../screens/main_screens/EditScreen.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -47,6 +49,7 @@ class App extends StatelessWidget {
         '/add' : (context) => const HomeScreen(),
         '/message' : (context) => const MessageScreen(),
         '/individual_profile' : (context) => const ProfileScreen( mode: 'individual',),
+        '/edit_profile' : (context) => const EditScreen(),
       },
 
       localizationsDelegates: const [
