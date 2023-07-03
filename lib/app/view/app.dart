@@ -9,12 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:photo/l10n/l10n.dart';
 import 'package:flutter/services.dart';
-import 'package:photo/screens/main_screens/edit_screens/change_email.dart';
-import 'package:photo/screens/main_screens/edit_screens/change_nick.dart';
 
 import '../../screens/login.dart';
-import '../../screens/main_screens/edit_screens/change_password.dart';
-import '../../screens/main_screens/edit_screens/edit_screen.dart';
+import '../../screens/main_screens/edit_profile_screen.dart';
 import '../../screens/main_screens/main_screen.dart';
 import '../../screens/main_screens/message_screen.dart';
 import '../../screens/main_screens/profile_screen.dart';
@@ -52,9 +49,6 @@ class App extends StatelessWidget {
         '/message' : (context) => const MessageScreen(),
         '/individual_profile' : (context) => const ProfileScreen( mode: 'individual',),
         '/edit_profile' : (context) => const EditScreen(),
-        '/change_email' : (context) => ChangeEmail(),
-        '/change_nick' : (context) => ChangeNick(),
-        '/change_password' : (context) => ChangePassword(),
       },
 
       localizationsDelegates: const [
