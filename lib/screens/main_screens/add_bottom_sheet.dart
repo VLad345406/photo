@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-void showAddBottomSheet(context, double widthButton)
-{
+void showAddBottomSheet(context, double widthButton) {
   showMaterialModalBottomSheet<dynamic>(
     context: context,
     builder: (context) => SizedBox(
@@ -34,19 +34,30 @@ void showAddBottomSheet(context, double widthButton)
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(width: 2),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextButton(
                   onPressed: () {
                     //Navigator.pushNamed(context, '/login');
                   },
-                  child: Text(
-                    'Camera',
-                    style: GoogleFonts.roboto(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/camera.svg',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(width: 10,),
+                      Text(
+                        'Camera',
+                        style: GoogleFonts.roboto(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -56,21 +67,32 @@ void showAddBottomSheet(context, double widthButton)
                 height: 52,
                 margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(width: 2),
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 child: TextButton(
                   onPressed: () {
                     //Navigator.pushNamed(context, '/registration');
                   },
-                  child: Text(
-                    'Gallery',
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/gallery.svg',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(width: 10,),
+                      Text(
+                        'Gallery',
+                        style: GoogleFonts.roboto(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
