@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:photo/screens/main_screens/bottom_navigation_bar.dart';
-import 'package:photo/screens/main_screens/photo_open.dart';
-import 'package:photo/screens/main_screens/profile_header_builder.dart';
 
 class EditScreen extends StatefulWidget {
   const EditScreen({super.key});
@@ -15,7 +12,7 @@ class EditScreen extends StatefulWidget {
 class _EditScreenState extends State<EditScreen> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    //final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -119,7 +116,7 @@ class _EditScreenState extends State<EditScreen> {
               child: Text(
                 'Delete account',
                 style: GoogleFonts.comfortaa(
-                  color: Colors.black,
+                  color: Colors.red,
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
                 ),

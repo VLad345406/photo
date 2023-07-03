@@ -8,17 +8,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:photo/l10n/l10n.dart';
-import 'package:photo/screens/login.dart';
-import 'package:photo/screens/main_screens/home_screen.dart';
-import 'package:photo/screens/main_screens/message_screen.dart';
-import 'package:photo/screens/main_screens/profile_screen.dart';
-import 'package:photo/screens/main_screens/search_screen.dart';
-import 'package:photo/screens/registration.dart';
-import 'package:photo/screens/registration_nick.dart';
-import 'package:photo/screens/start_screen.dart';
 import 'package:flutter/services.dart';
 
-import '../../screens/main_screens/EditScreen.dart';
+import '../../screens/main_screens/main_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -37,20 +29,20 @@ class App extends StatelessWidget {
           accentColor: const Color(0xFF13B9FF),
         ),
       ),
-
-      initialRoute: getInitialRoute(),
+      home: MainScreen(),
+      /*initialRoute: getInitialRoute(),
       routes: {
         '/': (context) => const StartScreen(),
         '/login': (context) => const LoginScreen(),
         '/registration': (context) => const RegistrationScreen(),
         '/registration_nick': (context) => const RegistrationNickScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => const MainScreen(),
         '/search' : (context) => const SearchScreen(),
-        '/add' : (context) => const HomeScreen(),
+        '/add' : (context) => const DiscoverScreen(),
         '/message' : (context) => const MessageScreen(),
         '/individual_profile' : (context) => const ProfileScreen( mode: 'individual',),
         '/edit_profile' : (context) => const EditScreen(),
-      },
+      },*/
 
       localizationsDelegates: const [
         AppLocalizations.delegate,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:photo/screens/main_screens/bottom_navigation_bar.dart';
 import 'package:photo/screens/main_screens/chat_screen.dart';
 
 class MessageScreen extends StatefulWidget {
@@ -14,8 +13,8 @@ class MessageScreen extends StatefulWidget {
 class _MessageScreenState extends State<MessageScreen> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    //final screenWidth = MediaQuery.of(context).size.width;
+    //final screenHeight = MediaQuery.of(context).size.height;
 
     final List<String> users = [
       "Tom",
@@ -120,7 +119,6 @@ class _MessageScreenState extends State<MessageScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomMenu(),
     );
   }
 }

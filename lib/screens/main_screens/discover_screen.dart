@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:photo/screens/main_screens/bottom_navigation_bar.dart';
 import 'package:photo/screens/main_screens/photo_open.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class DiscoverScreen extends StatefulWidget {
+  const DiscoverScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    final widthButton = screenWidth - 32;
+    //final widthButton = screenWidth - 32;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -57,15 +56,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 3,
-                      itemBuilder: (BuildContext context, int index){
+                      itemBuilder: (BuildContext context, int index) {
                         return Container(
                           width: screenWidth - 32,
-                          margin: const EdgeInsets.only(left: 16, top: 24, right: 16),
+                          margin: const EdgeInsets.only(
+                              left: 16, top: 24, right: 16),
                           child: Column(
                             children: [
                               GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoOpen(path: 'assets/images/start_background.jpg')));
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PhotoOpen(
+                                              path:
+                                                  'assets/images/start_background.jpg')));
                                 },
                                 child: Container(
                                   height: screenWidth - 32,
@@ -106,16 +111,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               );
-            }
-            else {
+            } else {
               return Column(
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoOpen(path: 'assets/images/start_background.jpg')));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PhotoOpen(
+                                  path: 'assets/images/start_background.jpg')));
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+                      margin:
+                          const EdgeInsets.only(top: 24, left: 16, right: 16),
                       height: screenWidth - 32,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
@@ -136,7 +145,6 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
           }),
-      bottomNavigationBar: const BottomMenu(),
     );
   }
 }
