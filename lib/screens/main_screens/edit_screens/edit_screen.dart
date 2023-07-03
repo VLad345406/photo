@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:photo/screens/main_screens/edit_screens/change_email.dart';
 
 class EditScreen extends StatefulWidget {
   const EditScreen({super.key});
@@ -63,7 +63,7 @@ class _EditScreenState extends State<EditScreen> {
             padding: EdgeInsets.only(left: 10),
             child: TextButton(
               onPressed: () {
-                print("Change email");
+                Navigator.pushNamed(context, '/change_email');
               },
               child: Text(
                 'Change email',
@@ -79,7 +79,7 @@ class _EditScreenState extends State<EditScreen> {
             padding: EdgeInsets.only(left: 10),
             child: TextButton(
               onPressed: () {
-                print("Change nick");
+                Navigator.pushNamed(context, '/change_nick');
               },
               child: Text(
                 'Change nick',
@@ -94,8 +94,8 @@ class _EditScreenState extends State<EditScreen> {
           Container(
             padding: EdgeInsets.only(left: 10),
             child: TextButton(
-              onPressed: () { 
-                print("Change password");
+              onPressed: () {
+                Navigator.pushNamed(context, '/change_password');
               },
               child: Text(
                 'Change password',
