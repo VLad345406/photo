@@ -10,14 +10,15 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  var _email, _passwd;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  dynamic _readTextFormField(dynamic value){
-    dynamic data;
-    setState((){
-      data = value;
+  bool _isObscure = true;
+
+  void showPassword() {
+    setState(() {
+      _isObscure = !_isObscure;
     });
-    return data;
   }
 
   @override
@@ -45,6 +46,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         //mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          //header text
           Container(
             margin: const EdgeInsets.only(left: 16, top: 32.65, bottom: 32),
             child: Text(
@@ -56,17 +58,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
           ),
+          //email text-field
           Padding(
             padding: const EdgeInsets.only(
-              left: 17,
-              right: 17,
-              top: 14,
-              bottom: 20,
+              left: 16,
+              right: 16,
             ),
             child: TextFormField(
-              onChanged: (value){
-                _email = _readTextFormField(value);
-              },
+              controller: emailController,
               style: GoogleFonts.roboto(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
@@ -79,13 +78,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   color: Colors.black,
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.zero),
+                  //borderRadius: BorderRadius.all(Radius.zero),
                   borderSide: BorderSide(
                     width: 2,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.zero),
+                  //borderRadius: BorderRadius.all(Radius.zero),
                   borderSide: BorderSide(
                     width: 2,
                   ),
@@ -94,39 +93,44 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               textInputAction: TextInputAction.next,
             ),
           ),
+          //password text-field
           Padding(
             padding: const EdgeInsets.only(
-              left: 17,
-              right: 17,
-              top: 14,
-              bottom: 20,
+              left: 16,
+              right: 16,
+              top: 16,
             ),
             child: TextFormField(
-              obscureText: true,
+              controller: passwordController,
+              obscureText: _isObscure,
               enableSuggestions: false,
               autocorrect: false,
-              onChanged: (value){
-                _passwd = _readTextFormField(value);
-              },
               style: GoogleFonts.roboto(
                 fontSize: 15,
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.normal,
               ),
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isObscure ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.black,
+                  ),
+                  onPressed: showPassword,
+                ),
                 labelText: 'Password',
                 labelStyle: TextStyle(
                   color: Colors.black,
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.zero),
+                  //borderRadius: BorderRadius.all(Radius.zero),
                   borderSide: BorderSide(
                     width: 2,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.zero),
+                  //borderRadius: BorderRadius.all(Radius.zero),
                   borderSide: BorderSide(
                     width: 2,
                   ),
@@ -134,6 +138,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
           ),
+          //registration button
           Container(
             width: screenWidth - 32,
             height: 52,

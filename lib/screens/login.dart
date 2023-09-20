@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,14 +12,47 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var _email, _passwd;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  dynamic _readTextFormField(dynamic value){
-    dynamic data;
-    setState((){
-      data = value;
+  Future signIn() async {
+    if (emailController.text == '' || passwordController.text == '') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Input email and password!"),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+    else {
+      try {
+        setState(() {
+          const Center(child: CircularProgressIndicator());
+        });
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        Navigator.pushNamed(
+            context, '/wait_accept');
+      }
+      catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString()),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    }
+  }
+
+  bool _isObscure = true;
+
+  void showPassword() {
+    setState(() {
+      _isObscure = !_isObscure;
     });
-    return data;
   }
 
   @override
@@ -59,15 +91,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          //email text-field
           Padding(
             padding: const EdgeInsets.only(
               left: 16,
               right: 16,
             ),
             child: TextFormField(
-              onChanged: (value){
-                _email = _readTextFormField(value);
-              },
+              controller: emailController,
               style: GoogleFonts.roboto(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
@@ -95,6 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
               textInputAction: TextInputAction.next,
             ),
           ),
+          //password text-field
           Padding(
             padding: const EdgeInsets.only(
               left: 16,
@@ -102,10 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
               top: 16,
             ),
             child: TextFormField(
-              onChanged: (value){
-                _passwd = _readTextFormField(value);
-              },
-              obscureText: true,
+              controller: passwordController,
+              obscureText: _isObscure,
               enableSuggestions: false,
               autocorrect: false,
               style: GoogleFonts.roboto(
@@ -114,7 +144,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.normal,
               ),
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isObscure ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.black,
+                  ),
+                  onPressed: showPassword,
+                ),
                 labelText: 'Password',
                 labelStyle: TextStyle(
                   color: Colors.black,
@@ -134,6 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          //login button
           Container(
             width: screenWidth - 32,
             height: 52,
@@ -144,9 +182,10 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
             ),
             child: TextButton(
-              onPressed: () async {
+              /*onPressed: () async {
                 Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
-              },
+              },*/
+              onPressed: signIn,
               child: Text(
                 'LOG IN',
                 style: GoogleFonts.roboto(
@@ -157,6 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          //continue with text
           Align(
             alignment: Alignment.topCenter,
             child: Container(
@@ -171,13 +211,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          //Google auth button
           Align(
             alignment: Alignment.topCenter,
             child: Container(
               margin: const EdgeInsets.only(top: 16),
               child: IconButton(
                 icon: Image.asset('assets/login_screen/Google.png'),
-                onPressed: ()async {
+                onPressed: (){},
+                /*onPressed: ()async {
                   final FirebaseAuth auth;
 
                   GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -203,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   //}
 
                   //Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
-                },
+                },*/
               ),
             ),
           ),
