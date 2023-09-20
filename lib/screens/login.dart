@@ -33,8 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
-        Navigator.pushNamed(
-            context, '/wait_accept');
+        Navigator.pushNamed(context, '/wait_accept');
       }
       catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
