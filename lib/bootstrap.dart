@@ -8,6 +8,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 
 class AppBlocObserver extends BlocObserver {

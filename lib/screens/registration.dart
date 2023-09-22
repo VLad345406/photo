@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +13,43 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Future registration() async {
+    if (emailController.text == '' ||
+        passwordController.text == '') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please, input data!'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+    else {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        /*try {
+          final user = FirebaseAuth.instance.currentUser!;
+          await user.sendEmailVerification();
+        }
+        catch (e) {
+          snackBar(e.toString());
+        }*/
+        /*Navigator.pushNamed(
+            context, '/wait_accept');*/
+      }
+      catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString()),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    }
+  }
 
   bool _isObscure = true;
 
@@ -149,9 +187,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               color: Colors.black,
             ),
             child: TextButton(
-              onPressed: () {
+              onPressed: registration,
+              /*onPressed: () {
                 Navigator.pushNamed(context, '/registration_nick');
-              },
+              },*/
+              //onPressed: registration,
               child: Text(
                 'NEXT',
                 style: GoogleFonts.roboto(

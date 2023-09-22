@@ -6,14 +6,13 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:photo/app/app.dart';
 import 'package:photo/bootstrap.dart';
 
-//import 'firebase_options.dart';
-
 Future<void> main() async {
-  await Firebase.initializeApp(
-  //  options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await bootstrap(() => const App());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  //await bootstrap(() => const App());
+  runApp(const App());
 }

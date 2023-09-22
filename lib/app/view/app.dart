@@ -17,7 +17,7 @@ import '../../screens/main_screens/message_screen.dart';
 import '../../screens/main_screens/profile_screen.dart';
 import '../../screens/main_screens/search_screen.dart';
 import '../../screens/registration.dart';
-import '../../screens/registration_nick.dart';
+import '../../screens/registration_user_data.dart';
 import '../../screens/start_screen.dart';
 
 class App extends StatelessWidget {
@@ -43,7 +43,7 @@ class App extends StatelessWidget {
         '/': (context) => const StartScreen(),
         '/login': (context) => const LoginScreen(),
         '/registration': (context) => const RegistrationScreen(),
-        '/registration_nick': (context) => const RegistrationNickScreen(),
+        '/registration_nick': (context) => const RegistrationUserDataScreen(),
         '/home': (context) => const MainScreen(),
         '/search' : (context) => const SearchScreen(),
         '/message' : (context) => const MessageScreen(),
