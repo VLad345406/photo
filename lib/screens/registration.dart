@@ -37,8 +37,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         catch (e) {
           snackBar(e.toString());
         }*/
-        /*Navigator.pushNamed(
-            context, '/wait_accept');*/
+        Navigator.pushNamed(
+            context, '/wait_accept_email');
       }
       catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(

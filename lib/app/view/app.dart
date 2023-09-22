@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:photo/l10n/l10n.dart';
 import 'package:flutter/services.dart';
+import 'package:photo/screens/wait_accept_email_page.dart';
 
 import '../../screens/login.dart';
 import '../../screens/main_screens/edit_profile_screen.dart';
@@ -43,7 +44,8 @@ class App extends StatelessWidget {
         '/': (context) => const StartScreen(),
         '/login': (context) => const LoginScreen(),
         '/registration': (context) => const RegistrationScreen(),
-        '/registration_nick': (context) => const RegistrationUserDataScreen(),
+        '/wait_accept_email': (context) => const WaitAcceptEmailPage(),
+        '/registration_user_data': (context) => const RegistrationUserDataScreen(),
         '/home': (context) => const MainScreen(),
         '/search' : (context) => const SearchScreen(),
         '/message' : (context) => const MessageScreen(),
