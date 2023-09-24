@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../start_screen.dart';
 
 class ProfileHeaderBuilder extends StatefulWidget {
   final String mode;
@@ -11,12 +14,12 @@ class ProfileHeaderBuilder extends StatefulWidget {
   State<ProfileHeaderBuilder> createState() => _ProfileHeaderBuilder();
 }
 
-class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
+class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    if (widget.mode == 'individual'){
+    if (widget.mode == 'individual') {
       return Column(
         children: [
           Container(
@@ -41,7 +44,7 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
           ),
           Center(
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Clipboard.setData(ClipboardData(text: "@TomProfile1"));
                 print("success copied");
               },
@@ -66,12 +69,10 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
                 style: GoogleFonts.roboto(
                     color: Colors.black,
                     fontSize: 13,
-                    fontWeight: FontWeight.w900
-                ),
+                    fontWeight: FontWeight.w900),
               ),
             ),
           ),
-
           Container(
             width: screenWidth - 32,
             height: 52,
@@ -94,10 +95,64 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
               ),
             ),
           ),
+          Container(
+            width: screenWidth - 32,
+            height: 52,
+            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            decoration: BoxDecoration(
+              border: Border.all(width: 2),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: TextButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context) {
+                  return StartScreen();
+                }), (route) => false);
+              },
+              child: Text(
+                'EXIT PROFILE',
+                style: GoogleFonts.roboto(
+                  color: Colors.red,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: screenWidth - 32,
+            height: 52,
+            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            decoration: BoxDecoration(
+              border: Border.all(width: 2),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: TextButton(
+              onPressed: () async {
+                FirebaseAuth.instance.authStateChanges().listen((
+                    User? user) {
+                  user?.delete();
+                });
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context) {
+                      return StartScreen();
+                    }), (route) => false);
+              },
+              child: Text(
+                'REMOVE ACCOUNT',
+                style: GoogleFonts.roboto(
+                  color: Colors.red,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+          ),
         ],
       );
-    }
-    else {
+    } else {
       return Column(
         children: [
           Container(
@@ -122,7 +177,7 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
           ),
           Center(
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Clipboard.setData(ClipboardData(text: "@TomProfile1"));
                 print("success copied");
               },
@@ -147,12 +202,10 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
                 style: GoogleFonts.roboto(
                     color: Colors.black,
                     fontSize: 13,
-                    fontWeight: FontWeight.w900
-                ),
+                    fontWeight: FontWeight.w900),
               ),
             ),
           ),
-
           Container(
             width: screenWidth - 32,
             height: 52,
@@ -202,5 +255,4 @@ class _ProfileHeaderBuilder extends State<ProfileHeaderBuilder>{
       );
     }
   }
-
 }

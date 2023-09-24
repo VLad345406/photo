@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:photo/screens/main_screens/main_screen.dart';
 
 class RegistrationUserDataScreen extends StatefulWidget {
   const RegistrationUserDataScreen({super.key});
 
   @override
-  State<RegistrationUserDataScreen> createState() => _RegistrationUserDataScreenState();
+  State<RegistrationUserDataScreen> createState() =>
+      _RegistrationUserDataScreenState();
 }
 
-class _RegistrationUserDataScreenState extends State<RegistrationUserDataScreen> {
-
+class _RegistrationUserDataScreenState
+    extends State<RegistrationUserDataScreen> {
   @override
   Widget build(BuildContext context) {
-
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -21,7 +21,7 @@ class _RegistrationUserDataScreenState extends State<RegistrationUserDataScreen>
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
+        /*leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
@@ -30,7 +30,7 @@ class _RegistrationUserDataScreenState extends State<RegistrationUserDataScreen>
             width: 12.21,
             height: 11.35,
           ),
-        ),
+        ),*/
       ),
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +121,7 @@ class _RegistrationUserDataScreenState extends State<RegistrationUserDataScreen>
           Container(
             width: screenWidth - 32,
             height: 52,
-            margin: const EdgeInsets.only(left: 16,top: 16),
+            margin: const EdgeInsets.only(left: 16, top: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               border: Border.all(width: 2),
@@ -129,7 +129,10 @@ class _RegistrationUserDataScreenState extends State<RegistrationUserDataScreen>
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context) {
+                  return MainScreen();
+                }), (route) => false);
               },
               child: Text(
                 'SIGN UP',

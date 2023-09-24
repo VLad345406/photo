@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:photo/screens/wait_accept_email_page.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,8 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
           behavior: SnackBarBehavior.floating,
         ),
       );
-    }
-    else {
+    } else {
       try {
         setState(() {
           const Center(child: CircularProgressIndicator());
@@ -33,9 +33,11 @@ class _LoginScreenState extends State<LoginScreen> {
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
-        Navigator.pushNamed(context, '/wait_accept');
-      }
-      catch (e) {
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (context) {
+          return WaitAcceptEmailPage();
+        }), (route) => false);
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(e.toString()),
@@ -56,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -158,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 focusedBorder: OutlineInputBorder(
                   //borderRadius: BorderRadius.all(Radius.zero),
                   borderSide: BorderSide(
-                      width: 2,
+                    width: 2,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -174,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             width: screenWidth - 32,
             height: 52,
-            margin: const EdgeInsets.only(left: 16,top: 16),
+            margin: const EdgeInsets.only(left: 16, top: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               border: Border.all(width: 2),
@@ -217,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
               margin: const EdgeInsets.only(top: 16),
               child: IconButton(
                 icon: Image.asset('assets/login_screen/Google.png'),
-                onPressed: (){},
+                onPressed: () {},
                 /*onPressed: ()async {
                   final FirebaseAuth auth;
 

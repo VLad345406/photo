@@ -1,24 +1,7 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:photo/l10n/l10n.dart';
 import 'package:flutter/services.dart';
 import 'package:photo/screens/wait_accept_email_page.dart';
-
-import '../../screens/login.dart';
-import '../../screens/main_screens/edit_profile_screen.dart';
-import '../../screens/main_screens/main_screen.dart';
-import '../../screens/main_screens/message_screen.dart';
-import '../../screens/main_screens/profile_screen.dart';
-import '../../screens/main_screens/search_screen.dart';
-import '../../screens/registration.dart';
-import '../../screens/registration_user_data.dart';
 import '../../screens/start_screen.dart';
 
 class App extends StatelessWidget {
@@ -38,7 +21,23 @@ class App extends StatelessWidget {
           accentColor: const Color(0xFF13B9FF),
         ),
       ),
-      //home: MainScreen(),
+      home: Scaffold(
+        body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator(),);
+            }
+            else if (snapshot.hasData) {
+              return const WaitAcceptEmailPage();
+            }
+            else {
+              return const StartScreen();
+            }
+          },
+        ),
+      ),
+      /*//home: MainScreen(),
       initialRoute: getInitialRoute(),
       routes: {
         '/': (context) => const StartScreen(),
@@ -57,14 +56,15 @@ class App extends StatelessWidget {
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: AppLocalizations.supportedLocales,*/
     );
   }
 }
 
+/*
 String getInitialRoute(){
   if (true)
     return '/';
   // else
   //   return '/home';
-}
+}*/

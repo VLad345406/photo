@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:photo/screens/registration.dart';
+import 'package:photo/screens/main_screens/main_screen.dart';
+import 'package:photo/screens/start_screen.dart';
 
 class WaitAcceptEmailPage extends StatefulWidget {
   const WaitAcceptEmailPage({super.key});
@@ -13,7 +14,6 @@ class WaitAcceptEmailPage extends StatefulWidget {
 }
 
 class _WaitAcceptEmailPageState extends State<WaitAcceptEmailPage> {
-
   bool isEmailVerified = false;
   Timer? timer;
 
@@ -28,7 +28,7 @@ class _WaitAcceptEmailPageState extends State<WaitAcceptEmailPage> {
 
       timer = Timer.periodic(
         Duration(seconds: 3),
-          (_) => checkEmailVerified(),
+        (_) => checkEmailVerified(),
       );
     }
   }
@@ -54,8 +54,7 @@ class _WaitAcceptEmailPageState extends State<WaitAcceptEmailPage> {
     try {
       final user = FirebaseAuth.instance.currentUser!;
       await user.sendEmailVerification();
-    }
-    catch (e) {
+    } catch (e) {
       snackBar(e.toString());
     }
   }
@@ -70,66 +69,68 @@ class _WaitAcceptEmailPageState extends State<WaitAcceptEmailPage> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      isEmailVerified ? RegistrationScreen() :
-      Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-              child: Center(
-                child: Text(
-                  'We have sent you a confirmation email\n'
-                      'to the email address you provided.\n'
-                      'Please confirm your e-mail address!',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
+  Widget build(BuildContext context) => isEmailVerified
+      ? MainScreen()
+      : Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: Center(
+                  child: Text(
+                    'We have sent you a confirmation email\n'
+                    'to the email address you provided.\n'
+                    'Please confirm your e-mail address!',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: 60,
-              //width: screenWidth - 32,
-              margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-              decoration: BoxDecoration(
-                border: Border.all(width: 2),
-                color: Colors.black,
-              ),
-              child: TextButton(
-                onPressed: sendVerificationEmail,
-                child: Text(
-                  'Resent Email',
-                  style: GoogleFonts.roboto(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
+              //resent email button
+              Container(
+                height: 60,
+                //width: screenWidth - 32,
+                margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2),
+                  color: Colors.black,
+                ),
+                child: TextButton(
+                  onPressed: sendVerificationEmail,
+                  child: Text(
+                    'Resent Email',
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: TextButton(
-                onPressed: () {
-                  try {
-                    FirebaseAuth.instance.signOut();
-                  }
-                  catch (e) {
-                    Navigator.pushAndRemoveUntil(context, '/home' as Route<Object?>, (route) => false);
-                  }
-                },
-                child: const Text(
-                  'Cansel',
-                  style: TextStyle(
-                      fontSize: 20
+              //cansel button
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: TextButton(
+                  onPressed: () {
+                    try {
+                      FirebaseAuth.instance.signOut();
+                    } catch (e) {
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (context) {
+                        return StartScreen();
+                      }), (route) => false);
+                    }
+                  },
+                  child: const Text(
+                    'Cansel',
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      );
+            ],
+          ),
+        );
 }

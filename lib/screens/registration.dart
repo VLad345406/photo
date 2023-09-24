@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:photo/screens/wait_accept_email_page.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -15,32 +16,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final passwordController = TextEditingController();
 
   Future registration() async {
-    if (emailController.text == '' ||
-        passwordController.text == '') {
+    if (emailController.text == '' || passwordController.text == '') {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please, input data!'),
           behavior: SnackBarBehavior.floating,
         ),
       );
-    }
-    else {
+    } else {
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
-        /*try {
-          final user = FirebaseAuth.instance.currentUser!;
-          await user.sendEmailVerification();
-        }
-        catch (e) {
-          snackBar(e.toString());
-        }*/
-        Navigator.pushNamed(
-            context, '/wait_accept_email');
-      }
-      catch (e) {
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (context) {
+          return WaitAcceptEmailPage();
+        }), (route) => false);
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(e.toString()),
@@ -61,7 +54,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -180,7 +172,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           Container(
             width: screenWidth - 32,
             height: 52,
-            margin: const EdgeInsets.only(left: 16,top: 16),
+            margin: const EdgeInsets.only(left: 16, top: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               border: Border.all(width: 2),
