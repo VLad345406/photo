@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   google_fonts: ^4.0.3
-  flutter_svg: ^1.1.5
+  flutter_svg: ^2.0.9
   modal_bottom_sheet: ^3.0.0-pre
 
   bloc: ^8.1.0
@@ -19,9 +19,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
-  flutterfire_cli: ^0.2.7
+  flutterfire_cli: ^0.3.0-dev.19
   firebase_core: ^2.2.0
-  google_sign_in: ^5.4.2
+  google_sign_in: ^6.2.1
   firebase_auth: ^4.1.2
   photo_view: ^0.14.0
 
@@ -29,9 +29,9 @@ dev_dependencies:
   bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
-  very_good_analysis: ^3.1.0
-  flutter_launcher_icons: ^0.10.0
+  mocktail: ^1.0.3
+  very_good_analysis: ^5.1.0
+  flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.2.14
 
 flutter_native_splash:

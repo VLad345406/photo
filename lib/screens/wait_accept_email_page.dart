@@ -72,6 +72,7 @@ class _WaitAcceptEmailPageState extends State<WaitAcceptEmailPage> {
   Widget build(BuildContext context) => isEmailVerified
       ? MainScreen()
       : Scaffold(
+          backgroundColor: Colors.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

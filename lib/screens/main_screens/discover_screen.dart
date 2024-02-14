@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:photo/screens/main_screens/photo_open.dart';
+import 'package:photo/elements/photo_card.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -57,40 +57,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: 3,
                       itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: screenWidth - 32,
-                          margin: const EdgeInsets.only(
-                              left: 16, top: 24, right: 16),
-                          child: Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => PhotoOpen(
-                                              path:
-                                                  'assets/images/start_background.jpg')));
-                                },
-                                child: Container(
-                                  height: screenWidth - 32,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/images/start_background.jpg",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 16),
-                                alignment: Alignment.bottomLeft,
-                                child: Image.asset('assets/images/user.png'),
-                              ),
-                            ],
-                          ),
+                        return PhotoCard(
+                          pathImage: 'assets/images/start_background.jpg',
                         );
                       },
                     ),
@@ -112,36 +80,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 ],
               );
             } else {
-              return Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PhotoOpen(
-                                  path: 'assets/images/start_background.jpg')));
-                    },
-                    child: Container(
-                      margin:
-                          const EdgeInsets.only(top: 24, left: 16, right: 16),
-                      height: screenWidth - 32,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                            "assets/images/start_background.jpg",
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 16, left: 16),
-                    alignment: Alignment.bottomLeft,
-                    child: Image.asset('assets/images/user.png'),
-                  ),
-                ],
+              return PhotoCard(
+                pathImage: 'assets/images/start_background.jpg',
               );
             }
           }),

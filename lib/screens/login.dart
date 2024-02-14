@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:photo/elements/button.dart';
+import 'package:photo/elements/text_field.dart';
 import 'package:photo/screens/wait_accept_email_page.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
@@ -48,14 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  bool _isObscure = true;
-
-  void showPassword() {
-    setState(() {
-      _isObscure = !_isObscure;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -77,7 +71,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -92,109 +85,25 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //email text-field
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-            ),
-            child: TextFormField(
-              controller: emailController,
-              style: GoogleFonts.roboto(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                decoration: TextDecoration.none,
-              ),
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                labelStyle: TextStyle(
-                  color: Colors.black,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  //borderRadius: BorderRadius.all(Radius.zero),
-                  borderSide: BorderSide(
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  //borderRadius: BorderRadius.all(Radius.zero),
-                  borderSide: BorderSide(
-                    width: 2,
-                  ),
-                ),
-              ),
-              textInputAction: TextInputAction.next,
-            ),
+          PhotoTextField(
+            controller: emailController,
+            showVisibleButton: false,
+            label: 'Email',
           ),
           //password text-field
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              top: 16,
-            ),
-            child: TextFormField(
-              controller: passwordController,
-              obscureText: _isObscure,
-              enableSuggestions: false,
-              autocorrect: false,
-              style: GoogleFonts.roboto(
-                fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-              ),
-              decoration: InputDecoration(
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _isObscure ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.black,
-                  ),
-                  onPressed: showPassword,
-                ),
-                labelText: 'Password',
-                labelStyle: TextStyle(
-                  color: Colors.black,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  //borderRadius: BorderRadius.all(Radius.zero),
-                  borderSide: BorderSide(
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  //borderRadius: BorderRadius.all(Radius.zero),
-                  borderSide: BorderSide(
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
+          PhotoTextField(
+            controller: passwordController,
+            showVisibleButton: true,
+            label: 'Password',
           ),
           //login button
-          Container(
-            width: screenWidth - 32,
-            height: 52,
-            margin: const EdgeInsets.only(left: 16, top: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              border: Border.all(width: 2),
-              color: Colors.black,
-            ),
-            child: TextButton(
-              /*onPressed: () async {
-                Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
-              },*/
-              onPressed: signIn,
-              child: Text(
-                'LOG IN',
-                style: GoogleFonts.roboto(
-                  color: Colors.white,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
+          PhotoButton(
+            widthButton: screenWidth - 32,
+            buttonMargin: const EdgeInsets.only(left: 16, top: 16),
+            buttonText: 'LOG IN',
+            textColor: Colors.white,
+            buttonColor: Colors.black,
+            function: signIn,
           ),
           //continue with text
           Align(
@@ -212,14 +121,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //Google auth button
-          Align(
+          /*Align(
             alignment: Alignment.topCenter,
             child: Container(
               margin: const EdgeInsets.only(top: 16),
               child: IconButton(
                 icon: Image.asset('assets/login_screen/Google.png'),
                 onPressed: () {},
-                /*onPressed: ()async {
+                */ /*onPressed: ()async {
                   final FirebaseAuth auth;
 
                   GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -245,10 +154,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   //}
 
                   //Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
-                },*/
+                },*/ /*
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

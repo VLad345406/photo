@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:photo/elements/button.dart';
 import 'package:photo/screens/login.dart';
 import 'package:photo/screens/registration.dart';
 
@@ -12,7 +12,6 @@ class StartScreen extends StatefulWidget {
 
 class _StartScreenState extends State<StartScreen> {
   @override
-
   Widget build(BuildContext context) {
     //get screen ppi
     final screenHeight = MediaQuery.of(context).size.height;
@@ -21,6 +20,7 @@ class _StartScreenState extends State<StartScreen> {
     final widthButton = (screenWidth - 32 - 9) / 2;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -40,57 +40,39 @@ class _StartScreenState extends State<StartScreen> {
           ),
           Row(
             children: [
-              Container(
-                width: widthButton,
-                height: 52,
-                margin: const EdgeInsets.only(top: 20, left: 16, right: 9),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return LoginScreen();
-                    }));
-                  },
-                  child: Text(
-                    'LOG IN',
-                    style: GoogleFonts.roboto(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
+              PhotoButton(
+                widthButton: widthButton,
+                buttonMargin: const EdgeInsets.only(top: 20, left: 16, right: 9),
+                buttonText: 'LOG IN',
+                textColor: Colors.black,
+                buttonColor: Colors.white,
+                function: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return LoginScreen();
+                      },
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
-              //const SizedBox(width: 9),
-              Container(
-                width: widthButton,
-                height: 52,
-                margin: const EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(width: 2),
-                  color: Colors.black,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                          return RegistrationScreen();
-                        }));
-                  },
-                  child: Text(
-                    'REGISTER',
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
+              PhotoButton(
+                widthButton: widthButton,
+                buttonMargin: const EdgeInsets.only(top: 20),
+                buttonText: 'REGISTER',
+                textColor: Colors.white,
+                buttonColor: Colors.black,
+                function: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return RegistrationScreen();
+                      },
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),

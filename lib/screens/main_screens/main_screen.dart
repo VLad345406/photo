@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:photo/screens/main_screens/add_bottom_sheet.dart';
+import 'package:photo/elements/add_bottom_sheet/add_bottom_sheet.dart';
 import 'package:photo/screens/main_screens/discover_screen.dart';
 import 'package:photo/screens/main_screens/message_screen.dart';
 import 'package:photo/screens/main_screens/profile_screen.dart';

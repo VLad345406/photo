@@ -40,7 +40,6 @@ class _ChatScreenState extends State<ChatScreen> {
       "Kate"
     ];
 
-    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -80,12 +79,6 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-      /*body: Container(
-        height: AppBar().preferredSize.height,
-        decoration: BoxDecoration(
-          color: Colors.black
-        ),
-      ),*/
       body: Column(
         children: [
           Expanded(
@@ -149,10 +142,9 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 20, left: 16, bottom: 16, right: 16),
+                padding: EdgeInsets.only(top: 16, left: 16, bottom: 16, right: 16),
                 height: 82,
                 child: ConstrainedBox(
                   constraints: BoxConstraints.tight(Size(screenWidth - 90, 52)),
